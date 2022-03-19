@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Eduford">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Reet Khare">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduford</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/d652b9f554.js" crossorigin="anonymous"></script>
+     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!--    <link rel="shortcut icon" type="image/jpg" href="./Images/favicon.png">-->
+</head>
+
+<body>
+    <section class="sub-header">
+        <nav>
+            <a href="index.html"><img src="./Images/logo1.png" alt="Eduford Logo"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fas fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="aboutus.html">About Us</a>
+                    </li>
+                    <li>
+                        <a href="signin.html">Sign In</a>
+                    </li>
+                    <li>
+                        <a href="faqs.html">FAQs</a>
+                    </li>
+                    <li>
+                        <a href="contactus.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <i class="fas fa-bars" onclick="showMenu()"></i>
+        </nav>
+
+       <h1>Sign In</h1>
+    </section>
+   <!-----------------------------------------------------------Sign In Content-------------------------------------------------------------->
+
+ <section class="sign-in form" width=100%>
+<div class="container">
+	<form action="/action_page.php"  >
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email"  required><br>
+      <label for="name">Username:</label><br>
+      <input type="text" id="name" name="name"  required><br>
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password" required ><br>
+      <label for="contact">Contact Number:</label><br>
+      <input type="tel" id="contact" name="contact" required ><br>
+      <label for="ln">LinkedIn Id:</label><br>
+      <input type="text" id="ln" name="ln" ><br>
+    
+      
+      <br>
+
+    </form> 
+    <select>
+
+      <option><label>Select One</label></option>
+      <option value="student">Student</option>
+      <option value="professional">Professional</option>
+      <option value="freelancer">Freelancer</option>
+      <option value="company">Company</option>
+    
+    </select>
+  </div>
+
+  <div id="check" class="student box">
+    <div class="container">
+
+
+    <form action="/action_page.php"  >
+
+      
+      <label for="college">Institute name:</label><br>
+      <input type="text" id="college" name="college"  required><br>
+      <label for="domain">Domains:</label><br>
+      <input type="text" id="domain" name="domain" ><br><br>
+      <label>Are you working on a project? :</label>
+      <input type="radio" id="yes" name="proj" value="yes">
+      <label for="yes">yes</label>
+      <input type="radio" id="no" name="proj" value="no">
+      <label for="no">no</label><br>
+      <label for="project">Projects:</label><br>
+      <textarea id="project" name="project" rows="10" cols="50"></textarea> 
+	<br><br><br>
+      <input type="submit" value="Submit">
+      
+      <br><br><br>
+
+    </form> 
+
+
+</div>
+  </div>
+  <div id="check" class="professional box">
+    
+           <div class="container">
+
+
+          <form action="/action_page.php"  >
+
+           
+            <label for="institute">Name of Institute:</label><br>
+            <input type="text" id="institute" name="institute" ><br>
+            <label for="domain">Domains:</label><br>
+            <input type="text" id="domain" name="domain" ><br>
+            <label for="role">Role:</label><br>
+            <input type="text" id="role" name="role" ><br>
+            <label for="project">Projects:</label><br>
+            <textarea id="project" name="project" rows="10" cols="50"></textarea> 
+           <br><br><br>
+            <input type="submit" value="Submit">
+            
+            <br><br><br>
+
+          </form> 
+      </div>
+        </div>
+  <div id="check" class="freelancer box">
+    
+     <div class="container">
+
+
+    <form action="/action_page.php"  >
+
+
+            <label for="domain">Domains:</label><br>
+         <input type="text" id="domain" name="domain" ><br>
+            
+            <label for="project">Projects:</label><br>
+            <textarea id="project" name="project" rows="10" cols="50"></textarea> 
+      <br><br><br>
+	<input type="submit" value="Submit">
+      <br><br><br>
+
+    </form> 
+
+
+</div>
+    
+  </div>
+<div id="check" class="company box">
+    
+     <div class="container">
+
+
+    <form action="/action_page.php"  >
+
+           <label for="company">Name of Company:</label><br>
+            <input type="text" id="company" name="company"  required><br>
+
+            <label for="domain">Domains:</label><br>
+            <input type="text" id="domain" name="domain" ><br>
+            
+            <label for="project">Projects:</label><br>
+            <textarea id="project" name="project" rows="10" cols="50"></textarea> 
+<br><br><br>
+	<input type="submit" value="Submit">
+      <br><br><br>
+
+    </form> 
+
+
+</div>
+    
+  </div>
+<script>
+$(document).ready(function() {
+  $("select").change(function() {
+    $(this).find("option:selected").each(function() {
+      var optionValue = $(this).attr("value");
+      if (optionValue) {
+        $(".box").not("." + optionValue).hide();
+        $("." + optionValue).show();
+      } else {
+        $(".box").hide();
+      }
+    });
+  }).change();
+});
+</script>
+   </section>
+   <!-----------------------------------------------------------------Footer-------------------------------------------------------------------->
+   <section class="footer">
+      <hr>
+       <h4>About Us</h4>
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe officiis ut sequi consequuntur officia similique blanditiis autem quibusdam ea, amet est nisi fugit! <br>Commodi explicabo rem magnam debitis, libero consectetur!</p>
+       <div class="icons">
+           <i class="fa fa-facebook"></i>
+           <i class="fa fa-twitter"></i>
+           <i class="fa fa-instagram"></i>
+           <i class="fa fa-linkedin"></i>
+       </div>
+       <hr>
+   </section>
+ <script src="./JS/script.js"></script>
+  <style> 
+body{
+background-color: grey;
+}
+form {
+        border: 3px solid #f1f1f1;
+    }
+* {
+  box-sizing: border-box;
+}
+
+input[type=email], input[type=password], input[type=text], input[type=tel] {
+  background-color:   #eee6ff;
+  width: 80%;
+  padding: 2%;
+  border: 2px solid #8e5dbb;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+div.inset {border-style: inset;}
+
+input[type=submit] {
+  background-color: #9933ff;
+
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #e6ccff;
+}
+
+.container {
+  border-radius: 7px;
+  background-color: #f2edf7;
+  padding: 20px;
+}
+
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+</style>
+</body>
+</html>
+
