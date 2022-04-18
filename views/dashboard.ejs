@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head'); %>
+    <title>Welcome!</title>
+    
+<!--    <link rel="shortcut icon" type="image/jpg" href="./Images/favicon.png">-->
+</head>
+
+<body>
+  
+            
+    <section class="sub-header">
+
+        <%- include('partials/header'); %>
+
+
+    </section>
+   <!------------------------------------------------------------Dashboard Content--------------------------------------------------------------->
+   <%   if(typeof message != "undefined" && message && message!= "") { %>
+    <div class="mt-5 mb-3">
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+          <strong><%=  message  %></strong>
+
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+        </div>
+
+      </div> 
+
+    <% }    %>
+
+    <%   if(locals.session.loggedin) { %>
+        <div class="mt-5 mb-3">
+    
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    
+              <strong>Welcome user <%= locals.session.userid  %>!</strong>
+    
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    
+            </div>
+    
+          </div> 
+    
+        <% }    %>
+
+
+
+        <button><a href = '/display'>Click here to see users</a></button>
+        <% if(typeof data != "undefined" && data){ %> 
+          
+        
+          
+        <% if(data.length){
+ 
+          for(var i = 0; i< data.length; i++) {%>  
+          <tr>
+            <th scope="row"><%= (i+1) %></th>
+            <td><%= data[i].userID%></td>
+            <td><%= data[i].emailID%></td>
+            <td>
+            <a class="btn btn-success edit" href="">connect</a>                                            
+           </td>
+          </tr>
+          <% }}else{ %>
+               <tr>
+                  <td colspan="3">No user</td>
+               </tr>
+            <% }} %> 
+
+
+            <button><a href = '/displayProfile'>Click here to see users</a></button>
+        <% if(typeof pdata != "undefined" && pdata){ %> 
+          <tr>
+            <th scope="row"></th>
+            <td><%= pdata[0].userID%></td>
+            <td><%= pdata[0].username%></td>
+            <td><%= pdata[0].emailID%></td>
+            <td><%= pdata[0].contact%></td>
+            <td><%= pdata[0].category%></td>
+            <td><a class="btn btn-success edit" href="">connect</a></td>
+          </tr>
+          <div class="col-md-3 col-lg-3 "> <img alt="User Pic" src="<%= pdata[0].profilepic %>" class="img-circle img-responsive"> </div>
+            <% } %> 
+ 
+ 
+         
+   <!------------------------------------------------------Footer-------------------------------------------------------------------->
+   <section class="footer">
+    <%- include('partials/footer'); %>
+   </section>
+ <script src="./js/script.js"></script>
+
+</body>
+</html>
