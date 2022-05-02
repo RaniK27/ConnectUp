@@ -6,3 +6,11 @@ function showMenu() {
 function hideMenu() {
     navLinks.style.right = "-200px";
 }
+
+const faqs = document.querySelectorAll(".faq");
+
+faqs.forEach(faq => {
+    faq.addEventListener("click", () => {
+        faq.classList.toggle("active");
+    });
+});
