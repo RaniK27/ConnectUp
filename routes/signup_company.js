@@ -37,7 +37,7 @@ router.post('/submit_company',upload.single('image'),async(req,res)=>{
     }
 
     var userId = 0;
-    var sql = `INSERT INTO userData_Signup VALUES("${req.body.name}","${req.body.username}","${req.body.email}","${password}","${req.body.contact}","1","${imgsrc}")`
+    var sql = `INSERT INTO userData_Signup VALUES("${req.body.name}","${req.body.username}","${req.body.email}","${password}","${req.body.contact}","2","${imgsrc}")`
     mysqlConn.query(sql,(err,rows,fields)=>{
         if(err){
             console.log(err)
@@ -62,8 +62,17 @@ router.post('/submit_company',upload.single('image'),async(req,res)=>{
                 }
             else{
                 console.log(rows)
-                req.flash('status','Account successfully created! You can now signin!')
-                res.redirect('signin');
+                var sqlrate = `INSERT INTO rate VALUES("${req.body.name}","0","0")`
+                mysqlConn.query(sqlrate,(err,row)=>{
+                    if(err)
+                    {
+                        console.log(err);
+                    }else{
+                        req.flash('status','Account successfully created! You can now signin!')
+                        res.redirect('signin');
+                    }
+                });
+                
                     }
                 
                 });    

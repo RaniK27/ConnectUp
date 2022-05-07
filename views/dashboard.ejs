@@ -18,6 +18,8 @@
 
     </section>
    <!------------------------------------------------------------Dashboard Content--------------------------------------------------------------->
+   
+   
    <%   if(typeof message != "undefined" && message && message!= "") { %>
     <div class="mt-5 mb-3">
 
@@ -48,52 +50,83 @@
     
         <% }    %>
 
+        <button><a href = '/topfive'>Top records</a></button><br>
+        <button><a href = '/discoverCon'>Discover</a></button><br>
+        <button><a href = '/connections'>Connections</a></button><br>
+        <button><a href = '/dispReviews/<%= locals.session.userid  %>'>Reviews</a></button><br>
+        <button><a href = '/announcements/<%= locals.session.userid  %>'>Announcements</a></button><br>
+        <hr><br><hr>
 
-
-        <button><a href = '/display'>Click here to see users</a></button>
         <% if(typeof data != "undefined" && data){ %> 
-          
-        
-          
-        <% if(data.length){
- 
-          for(var i = 0; i< data.length; i++) {%>  
-          <tr>
-            <th scope="row"><%= (i+1) %></th>
-            <td><%= data[i].userID%></td>
-            <td><%= data[i].emailID%></td>
-            <td>
-            <a class="btn btn-success edit" href="">connect</a>                                            
-           </td>
-          </tr>
-          <% }}else{ %>
-               <tr>
-                  <td colspan="3">No user</td>
-               </tr>
-            <% }} %> 
 
-
-            <button><a href = '/displayProfile'>Click here to see users</a></button>
-        <% if(typeof pdata != "undefined" && pdata){ %> 
-          <tr>
+          <div class="col-md-3 col-lg-3 "> <img alt="User Pic" src="<%= data[0].profilepic %>" class="img-circle img-responsive" width="250" height="250" > </div>
+  
+          <div class="ratings">
+              <h2>Ratings : <%= data[0].ratings %></h2><br><br>
+              <p>
+                  <% for (var i = 0; i < 5 ; i++ ) { %>
+                    <span class="fa fa-star checked<%= (i < data[0].ratings - 0.5) ? '' : '-empty'%>"></span> 
+                  <% } %>
+              </p>
+          </div>
+         
             <th scope="row"></th>
-            <td><%= pdata[0].userID%></td>
-            <td><%= pdata[0].username%></td>
-            <td><%= pdata[0].emailID%></td>
-            <td><%= pdata[0].contact%></td>
-            <td><%= pdata[0].category%></td>
-            <td><a class="btn btn-success edit" href="">connect</a></td>
-          </tr>
-          <div class="col-md-3 col-lg-3 "> <img alt="User Pic" src="<%= pdata[0].profilepic %>" class="img-circle img-responsive"> </div>
+            <tr>User id : <%= data[0].userID%></tr><br>
+            <tr>Name : <%= data[0].username%></tr><br>
+            <tr>EmailID : <%= data[0].emailID%></tr><br>
+            <tr>Contact No: <%= data[0].contact%></tr><br>
+            <tr>Linked In: <%= data[0].linkedin%></tr><br>
+            <tr>Domain(current): <%= data[0].domain%></tr><br>
+            <tr>Domain(interested) :  <%= data[0].domain_interested%></tr><br>
+  
+            <% if(data[0].category == 1){%>
+  
+            <tr>category : Student</tr>
+            <tr>Qualification : <%= data[0].qualification%></tr>
+            <tr>Institute: <%= data[0].institute %></tr>
+            <tr>Project : <%= data[0].proj_Desc %></tr>
+  
+            <% }else if(data[0].category == 2) {%>
+  
+            <tr>category: Company</tr>
+            <tr>Company Description: <%= data[0].company_desc%></tr>
+            <tr>Established: <%= data[0].started%></tr>
+            <tr>Address: <%= data[0].address%></tr>
+            <tr>Project : <%= data[0].proj_Desc%></tr>
+  
+            <% }else if(data[0].category == 3) {%>
+              <tr>category : Professional</tr>
+              <tr>Company : <%= data[0].company %></tr>
+              <tr>Designation: <%= data[0].position %></tr>
+              <tr>Latest Project :<br><br> <%= data[0].last_project %></tr>
+            <% }else { %>
+              <tr>category : Self Employed</tr>
+              <tr>Last firm worked for : <%= data[0].company %></tr>
+              <tr>Designation: <%= data[0].position %></tr>
+              <tr>Latest Project :<br><br> <%= data[0].last_project %></tr>
             <% } %> 
+  
+  <% } %>
+
+  <a class="btn btn-success edit" href="/editprofile">Edit</a>
+
+<hr><br><hr><br><hr>
+<section class="sign-in form" width=100%>
+  <div class="container">
+    <form method = "post" action="/addAnnounce" enctype="multipart/form-data">
+      <br><br>
+      <label for="image">Image(optional)</label>
+      <input type="file" name="image" accept='image/*' >
+      <br><br>
+      <label for="content">Post:</label><br>
+      <textarea id="content" name="content" rows="10" cols="50"></textarea> 
+    <button><input type="submit" value="Submit"></button>
+  </form> 
+  </div>
+  </section>
+            
  
  
          
    <!------------------------------------------------------Footer-------------------------------------------------------------------->
-   <section class="footer">
-    <%- include('partials/footer'); %>
-   </section>
- <script src="./js/script.js"></script>
-
-</body>
-</html>
+   <%- include('partials/footer'); %>

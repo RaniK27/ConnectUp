@@ -27,7 +27,9 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "net": "^1.0.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "star-rating": "^0.0.1",
+    "star-rating.js": "^4.2.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

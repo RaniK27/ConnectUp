@@ -60,6 +60,9 @@ const profrouter = require('./routes/signup_prof.js')
 const freerouter = require('./routes/signup_free.js')
 const subrouter = require('./routes/submit.js')
 const pfrouter = require('./routes/profile.js')
+const drouter = require('./routes/discover.js')
+const connrouter = require('./routes/connections.js')
+const topfiverouter = require('./routes/topfive.js')
 
 // Use the imported utility
 
@@ -76,6 +79,9 @@ app.use(profrouter)
 app.use(freerouter)
 app.use(subrouter)
 app.use(pfrouter)
+app.use(drouter)
+app.use(connrouter)
+app.use(topfiverouter)
 
 
 app.get('/signout',async(req,res)=>{

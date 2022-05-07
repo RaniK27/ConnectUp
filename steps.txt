@@ -1,0 +1,38 @@
+1. Open Terminal
+2. nodemon app
+3. Go to localhost 3000
+
+npm init --y (In package.json ,under scripts , start = "")
+npm start
+
+
+:::::Used in this project:::::
+
+npm install mysql2 --save
+npm install ejs --save
+npm install cookie-parser --save
+npm install express-flash --save
+npm install express-session --save
+npm install bcrypt --save 
+npm install multer --save
+npm install path --save
+npm install --save-dev nodemon / npm install -g nodemon
+
+
+:::::Possible files :::::
+
+npm install dotenv --save
+npm install cors --save
+npm install morgan --save
+npm install express-handlebars --save
+npm install net --save
+npm install express-validator --save
+
+
+Final step::
+
+nodemon index.js
+nodemon version
+
+
+If problem occurs : npm audit fix
