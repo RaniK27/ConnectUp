@@ -6,11 +6,14 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body {
+    background: #DCE1EB;
+}
 
 .header {
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgba(44,29,75,0.7), rgba(44,29,30,0.7)), url(../Images/banner.png);
+    background-image: linear-gradient(rgba(44,29,75,0.7), rgba(44,29,30,0.7)), url(../Images/bg1.jpg);
     background-position: center;
     background-size: cover;
     position: relative;
@@ -176,8 +179,8 @@ p{
 
 .courses-col{
     flex-basis: 31%;
-    background: #743CE5;
-    border-radius: 5px;
+    background: #FFFFFF;
+    border-radius: 2rem;
     margin-bottom: 5%;
     padding: 20px 12px;
     box-sizing: border-box; 
@@ -185,7 +188,7 @@ p{
 }
 
 .courses-col p{
-    color: #FFFFFF;
+    color: #3F424C;
     font-size: 14px;
     font-weight: 300;
     line-height: 22px;
@@ -194,9 +197,9 @@ p{
 
 
 h3{
-    color: #FFFFFF;
+    color: #3F424C;
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
     margin: 10px 0;
 }
 
@@ -212,6 +215,7 @@ h3{
 
 /*-----Facilities-----*/
 
+/*
 .facilities{
     width: 80%;
     margin: auto;
@@ -240,22 +244,23 @@ h3{
     width: 100%;
     border-radius: 5px;
 }
+*/
 
 /*-----Testimonials-----*/
 
 .testimonials{
     width: 80%;
     margin: auto;
-    padding-top: 100px;
+    padding-top: 70px;
     text-align: center;
 }
 
 .testimonials-col{
     flex-basis: 44%;
-    border-radius: 5px;
+    border-radius: 2rem;
     margin-bottom: 5%;
     text-align: left;
-    background: #743CE5;
+    background: #FFFFFF;
     padding: 25px;
     cursor: pointer;
     display:flex;
@@ -270,7 +275,7 @@ h3{
 }
 
 .testimonials-col p {
-    color: #FFFFFF;
+    color: #3F424C;
     padding: 0;
 }
 
@@ -291,7 +296,7 @@ h3{
 .cta{
     margin: 100px auto;
     width: 80%;
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../Images/banner2.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../Images/cta.jpg);
     background-position: center;
     background-size: cover;
     border-radius: 5px;
@@ -343,7 +348,7 @@ h3{
 .sub-header{
     height: 50vh;
     width: 100%;
-    background-image: linear-gradient(rgba(44,29,75,0.7), rgba(44,29,30,0.7)), url(../Images/background.jpg);
+    background-image: linear-gradient(rgba(44,29,75,0.7), rgba(44,29,30,0.7)), url(../Images/bg2.jpg);
     background-position: center;
     background-size: cover;
     text-align: center;
@@ -502,17 +507,17 @@ svg{
     margin-bottom: 17px;
     outline: none;
     border: 2px solid #23CFD6;
+    border-radius: 0.4rem
 }
 
 .contact-col .hero-btn {
     display: inline-block;
     text-decoration: none;
     color: #FFFFFF;
-    border: 1px solid #FFFFFF;;
+    border: 1px solid #23CFD6;;
     padding: 12px 25px;
     font-size: 15px;
     background: #23CFD6;
     position: relative;
     cursor: pointer;
 }
-
