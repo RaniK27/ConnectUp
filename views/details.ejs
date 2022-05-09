@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+    <html lang="en">   
+    <head>
+        <%- include('partials/head'); %>
+        <title></title>
+
+    </head>    
+    <body>
+        <section class="sub-header">
+            <%- include('partials/header'); %>    
+        </section>
+    <!-----------------------------------------------------------------Content-------------------------------------------------------------------->
+<% if(status == false){%>
+    
+    <h3 style="color:Navy;">announcements</h3>
+    <br><hr><br>
+
+    <% if(typeof data != "undefined" && data){ %> 
+        <% for(var i = 0; i< data.length; i++ ) {%>
+        <tr>
+          <th scope="row"></th>
+          <div class="col-md-3 col-lg-3 "> <img alt="User Pic" src="<%= data[i].poster %>" class="img-circle img-responsive" width="250" 
+            height="250"> </div>
+          <td><%= (i + 1)%></td>
+          <td><%= data[i].DateTime_posted%></td><br><br>
+          <td><%= data[i].content%></td>
+        </tr><br>
+        <% }}else { %>
+            <tr><td>No announcementsmade yet</td></tr>
+          <% } %> 
+          <br><br>
+
+    <%}else{%>
+        <h3 style="color:Navy;">reviews</h3>
+        <br><hr><br>
+        <h5 style="color:blueviolet;">reviews received</h5>
+        <hr>
+
+        <tr>
+            <td>No.</td>
+            <td>Id:</td>
+            <td>Rating </td>
+            <td>Description</td>
+            <td>Date </td>
+            
+        </tr><br><hr>
+
+
+        <% if(typeof data1 != "undefined" && data1){ %> 
+            <% for(var i = 0; i< data1.length; i++ ) {%>
+            <tr>
+              <th scope="row"></th>
+                <td><%= (i + 1)%></td>
+              <td><%= data1[i].reviewBy%></td>
+              <td><%= data1[i].rating%></td>
+              <td><%= data1[i].descript%></td>
+              <td><%= data1[i].added%></td>
+              
+            </tr><br>
+            <% }}else { %>
+                <tr><td>No reviews given</td></tr>
+              <% } %> 
+              <br><br>
+
+        <h5 style="color: green;">reviews Given</h5><br><br>
+
+
+        <tr>
+            <td>No.</td>
+            <td>Id:</td>
+            <td>Rating </td>
+            <td>Date </td>
+            <td>Description</td>
+        </tr><br><hr>
+        <% if(typeof data2 != "undefined" && data2){ %> 
+            <% for(var i = 0; i< data2.length; i++ ) {%>
+            <tr>
+              <th scope="row"></th>
+                <td><%= (i + 1)%></td>
+              <td><%= data2[i].reviewFor%></td>
+              <td><%= data2[i].rating%></td>
+              <td><%= data2[i].descript%></td>
+              <td><%= data2[i].added%></td>
+              
+            </tr><br>
+            <% }}else { %>
+                <tr><td>No reviews posted</td></tr>
+              <% } %> 
+              <br><br>
+        <%}%>
+
+        
+    <!-----------------------------------------------------------------Footer-------------------------------------------------------------------->
+    <%- include('partials/footer'); %>

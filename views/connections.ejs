@@ -1,0 +1,73 @@
+ <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <%- include('partials/head'); %>
+        <title>Connections</title>
+        
+    <!--    <link rel="shortcut icon" type="image/jpg" href="./Images/favicon.png">-->
+    </head>    
+    <body>
+        <section class="sub-header">
+            <%- include('partials/header'); %>    
+           <h1>Connections</h1>
+        </section>
+    <!-----------------------------------------------------------------Content-------------------------------------------------------------------->
+
+
+        <h3 style="color:Navy;">Sent - Awaiting approval</h3>
+        <% if(typeof dataS != "undefined" && dataS){ %> 
+            <% for(var i = 0; i< dataS.length; i++ ) {%>
+            <tr>
+              <th scope="row"></th>
+              <div class="col-md-3 col-lg-3 "> <img alt="User Pic" src="<%= dataS[i].profilepic %>" class="img-circle img-responsive" width="100" 
+                height="100"> </div>
+              <td><%= dataS[i].username%></td>
+              <td><%= dataS[i].emailID%></td>
+              <td><%= dataS[i].contact%></td>
+              <td><a class="btn btn-success edit" href="/profile/<%= dataS[i].userID %>">View</a></td>
+            </tr><br>
+            <% }}else { %>
+                <tr><td>No waiting connections...</td></tr>
+              <% } %> 
+              <br><br>
+        <h3 style="color:Navy;">Received</h3>
+        <table>
+        <% if(typeof dataR != "undefined" && dataR){ %> 
+            <% for(var i = 0; i< dataR.length; i++ ) {%>
+            <tr>
+              <th scope="row"></th>
+              <div class="col-md-3 col-lg-3 "> <img alt="User Pic" src="<%= dataR[i].profilepic %>" class="img-circle img-responsive" width="100" 
+                height="100"> </div>
+              <td><%= dataR[i].username%></td>
+              <td><%= dataR[i].emailID%></td>
+              <td><%= dataR[i].contact%></td>
+              <td><a class="btn btn-success edit" href="/profile/<%= dataR[i].userID %>">View</a></td>
+            </tr><br>
+            <% }}else { %>
+                <tr><td>No pending invitations...</td></tr>
+              <% } %> 
+
+            </table>
+    <br><br>
+ 
+        <h3 style="color:Navy;">Connected</h3>
+        <% if(typeof dataC != "undefined" && dataC){ %> 
+            <% for(var i = 0; i< dataC.length; i++ ) {%>
+            <tr>
+              <th scope="row"></th>
+              <div class="col-md-3 col-lg-3 "> <img alt="User Pic" src="<%= dataC[i].profilepic %>" width="100" 
+                height="100" class="img-circle img-responsive"> </div>
+              <td><%= dataC[i].username%></td>
+              <td><%= dataC[i].emailID%></td>
+              <td><%= dataC[i].contact%></td>
+              <td><a class="btn btn-success edit" href="/profile/<%= dataC[i].userID %>">View</a></td>
+            </tr><br>
+            <% }}else { %>
+                <tr><td>No created Connections!...</td></tr>
+              <% } %>
+
+
+
+    <!-----------------------------------------------------------------Footer-------------------------------------------------------------------->
+    <%- include('partials/footer'); %>

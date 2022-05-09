@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head'); %>
+    <title>Discover</title>   
+</head>
+
+<body>           
+    <section class="sub-header">
+        <%- include('partials/header'); %>
+    </section>
+    <!------------------------------------------------------------Discover Content--------------------------------------------------------------->
+<!--------UserCategory----->
+
+<br><br><label for="usertype">UserCategory :</label><br>
+<select id = "usertype" name = "usertype" onchange="usertype(this)">
+  <option value="0">companies(Startups)</option>
+  <option value="1">student</option>
+  <option value="2">companies(All)</option>
+  <option value="3">professional</option>
+  <option value="4">self-employed</option>    
+</select>
+<p id="ut">Usertype : </p>
+<script>
+    
+</script>
+<!---------------------->
+
+<!--------Filter----------->
+
+
+        <label for="dmtype">Domain  Interested :</label><br>
+        <select id = "dmtype" name = "dmtype" onchange = "changeDom(this)">
+            <% if(typeof domdata != "undefined" && domdata.length>0 ){ %>           
+                <% for(var i = 0; i< domdata.length; i++ ) {%>
+          <option value="<%- i + 1 %>"><%- domdata[i] %></option>
+          <% }}else{ %>
+            <option>None</option>
+            <% } %>
+
+        </select>
+        <p id="dom">Domain :  </p>
+        
+        
+
+<button onclick = "filter()">Search</button>
+<script>
+  
+var t = 0;
+var dm = 1;
+
+function usertype(event){
+t = event.value.toString();
+document.getElementById('ut').innerHTML = ("User type = " + t);    
+}
+
+function changeDom(event){
+    dm = event.value;
+    document.getElementById("ut").innerHTML = ("Usertype : " + t);
+    document.getElementById("dom").innerHTML = ("Domain : " + dm);
+      
+}   
+
+function filter(){
+location.href = `/discover/${t}/${dm}`;
+window.location       
+}
+
+</script>
+              
+        <!--------Recommendations-------->
+
+        <% if(typeof data != "undefined" && data.length > 0){ %>           
+            <% for(var i = 0; i < data.length; i++) { %>
+                        <div class="card" style="width: 18rem;">
+                            <img src="<%= data[i].profilepic %>" class="card-img-top" alt="profilepic">
+                            <div class="card-body">
+                              <p class="card-title"><%= data[i].userID%></p>
+                              <p class="card-text"><%= data[i].username%></p>  <!--check size--->
+                              <a href="/profile/<%= data[i].userID %>" class="btn btn-primary">View</option>
+                            </div>
+                          </div>
+                  <% }} else {%>
+                    <p>No compatible options available!</p>
+                  <% } %>
+      <!------------------------------>    
+
+    <!-----------------------------------------------------------------Footer-------------------------------------------------------------------->
+    <%- include('partials/footer'); %>

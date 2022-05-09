@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+    <title>Top Records</title>
+</head>
+<body>            
+    <section class="sub-header">
+        <%- include('partials/header'); %>
+    </section>
+   <!------------------------------------------------------Records------------------------------------------------------------------->
+
+
+   <button><a href = '/topfive'>Overall</a></button><br><br>
+   <button><a href = '/topfiveDaily'>Daily</a></button><br><br>
+   <button><a href = '/topfiveMonthly'>This Month</a></button><br><br>
+
+   <tr>
+       <td>No.</td>
+       <td>Name</td>
+       <td>Rating</td>
+   </tr><br><hr>
+   <% if(typeof data != "undefined" && data){ %>           
+    <% if(data.length){ %>
+      <% for(var i = 0; i< data.length; i++) {%>  
+      <tr>
+        <th scope="row"><%= (i+1) %></th>
+        <td><%= data[i].username%></td>
+      </tr><br><hr>
+      <% }}else{ %>
+           <tr>
+              <td colspan="3">Sorry! Coundn't display the records!</td>
+           </tr>
+        <% }} %> 
+
+
+   <!------------------------------------------------------Footer-------------------------------------------------------------------->
+   <%- include('partials/footer'); %>

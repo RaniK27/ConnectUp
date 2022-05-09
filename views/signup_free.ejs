@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('partials/head'); %>
+  <link rel="stylesheet" href="./css/form.css">
+  <title>Signup</title>
+</head>
+
+<body>
+    <section class="sub-header">
+      <%- include('partials/header'); %>
+       <h1>Sign Up</h1>
+    </section>
+   <!-----------------------------------------------------------Sign In Content-------------------------------------------------------------->
+
+
+   <%   if(typeof message != "undefined" && message && message != "") { %>
+    <div class="mt-5 mb-3">
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+          <strong><%=  message  %></strong>
+
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+        </div>
+
+      </div> 
+
+    <% }    %>
+
+ <section class="sign-in form" width=100%>
+<div class="container">
+	<form method = "post" action="/submit_free" enctype="multipart/form-data">
+    <br><br>
+    <label for="image">Profile Pic</label>
+    <input type="file" name="image" accept='image/*' >
+    <br><br>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email"  required><br>
+      <label for="name">Userid:</label><br>
+      <input type="text" id="name" name="name"  required><br>
+      <label for="username">Username:</label><br>
+      <input type="text" id="username" name="username"  required><br>
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password" required ><br>
+      <label for="contact">Contact Number:</label><br>
+      <input type="tel" id="contact" name="contact" required ><br>
+      <label for="ln">LinkedIn Id:</label><br>
+      <input type="text" id="ln" name="ln" ><br>
+      
+    
+    <label for="domain">Domain:</label><br>
+    <select name="domain" id="domain">
+        <option value="1">Web Development</option> 
+        <option value="2">Cyber Security</option>
+        <option value="3">Blockchain Development</option>
+        <option value="4">AI/ML</option>
+        <option value="5">Graphic Designing</option>
+
+    </select>
+    <br>
+    
+    <label for="intdomain">Interested Domain:</label><br>
+    <select name="intdomain" id="intdomain">
+        <option value="1">Web Development</option> 
+        <option value="2">Cyber Security</option>
+        <option value="3">Blockchain Development</option>
+        <option value="4">AI/ML</option>
+        <option value="5">Graphic Designing</option>
+
+    </select>
+
+    <label for="company">Last firm you worked for:</label><br>
+    <input type="text" id="ln" name="ln" ><br> 
+
+    <label for="position">What position you worked at?:</label><br>
+    <input type="text" id="position" name="position" ><br> 
+
+    <label for="project">Describe latest or previous Project(if any):</label><br>
+    <textarea id="project" name="project" rows="10" cols="50"></textarea> 
+      
+    <button><input type="submit" value="Submit"></button>
+    <br>
+    </form>    
+  </div>
+
+  
+ 
+  
+
+   </section>
+   <!-----------------------------------------------------------------Footer-------------------------------------------------------------------->
+   <%- include('partials/footer'); %>

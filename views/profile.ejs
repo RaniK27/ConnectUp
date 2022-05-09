@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head'); %>
+    <title><%data[0].username%></title>
+</head>
+
+<body>
+    <section class="sub-header">
+            <%- include('partials/header'); %>
+    </section>
+    <!-----------------------------------------------------------------Header-------------------------------------------------------------------->
+
+    <% if(typeof data != "undefined" && data){ %> 
+
+        <div class="col-md-3 col-lg-3 "> <img alt="User Pic" src="<%= data[0].profilepic %>" class="img-circle img-responsive"> </div>
+
+        <div class="ratings">
+            <h2>Ratings : <%= data[0].ratings %></h2><br><br>
+            <p>
+                <% for (var i = 0; i < 5 ; i++ ) { %>
+                  <span class="fa fa-star checked<%= (i < data[0].ratings - 0.5) ? '' : '-empty'%>"></span> 
+                <% } %>
+            </p>
+        </div>
+       
+          <th scope="row"></th>
+          <tr>User id : <%= data[0].userID%></tr><br>
+          <tr>Name : <%= data[0].username%></tr><br>
+          <tr>EmailID : <%= data[0].emailID%></tr><br>
+          <tr>Contact No: <%= data[0].contact%></tr><br>
+          <tr>Linked In: <%= data[0].linkedin%></tr><br>
+          <tr>Domain(current): <%= data[0].domain%></tr><br>
+          <tr>Domain(interested) :  <%= data[0].domain_interested%></tr><br>
+
+          <% if(data[0].category == 1){%>
+
+          <tr>category : Student</tr>
+          <tr>Qualification : <%= data[0].qualification%></tr>
+          <tr>Institute: <%= data[0].institute %></tr>
+          <tr>Project : <%= data[0].proj_Desc %></tr>
+
+          <% }else if(data[0].category == 2) {%>
+
+          <tr>category: Company</tr>
+          <tr>Company Description: <%= data[0].company_desc%></tr>
+          <tr>Established: <%= data[0].started%></tr>
+          <tr>Address: <%= data[0].address%></tr>
+          <tr>Project : <%= data[0].proj_Desc%></tr>
+
+          <% }else if(data[0].category == 3) {%>
+            <tr>category : Professional</tr>
+            <tr>Company : <%= data[0].company %></tr>
+            <tr>Designation: <%= data[0].position %></tr>
+            <tr>Latest Project :<br><br> <%= data[0].last_project %></tr>
+          <% }else { %>
+            <tr>category : Self Employed</tr>
+            <tr>Last firm worked for : <%= data[0].company %></tr>
+            <tr>Designation: <%= data[0].position %></tr>
+            <tr>Latest Project :<br><br> <%= data[0].last_project %></tr>
+          <% } %> 
+
+<% } %>
+            <% if(status == 0) { %>
+            <a class="btn btn-success edit" href="/connect/<%= data[0].userID %>">Connect</a>
+            <% }else if(status == 1) { %>
+            <a class="btn btn-success edit" href="/disconnect/<%= data[0].userID %>">Disconnect</a>
+            <% }else if(status == 2) { %>
+            <a class="btn btn-success edit" href="/withdraw/<%= data[0].userID %>">Pending</a>
+            <% }else { %>
+            <a class="btn btn-success edit" href="/accept/<%= data[0].userID %>">Accept</a>
+            <% } %>
+
+            <a class="btn btn-success edit" href="/dispReviews/<%= data[0].userID %>">See reviews</a>
+            <a class="btn btn-success edit" href="/announcements/<%= data[0].userID %>">See announcements</a>
+
+            <hr><br><hr><br><hr>
+            <section class="sign-in form" width=100%>
+              <div class="container">
+                <form method = "post" action="/addReview/<%= data[0].userID %>">
+                  <br><br>
+
+
+
+                  <h1>Rating</h1>
+                  <select name="rating" id="rating">
+                    <option value="0">0</option> 
+                    <option value="0.5">0.5</option>
+                    <option value="1">1</option>
+                    <option value="1.5">1.5</option>
+                    <option value="2">2</option>
+                    <option value="2.5">2.5</option>
+                    <option value="3">3</option>
+                    <option value="3.5">3.5</option>
+                    <option value="4">4</option>
+                    <option value="4.5">4.5</option>
+                    <option value="5">5</option>
+            
+                </select>
+                <!---
+
+                  <fieldset class="rate">
+                      <input type="radio" id="rating" name="rating" value="5" /><label for="rating10" title="5 stars"></label>
+                      <input type="radio" id="rating" name="rating" value="4.5" /><label class="half" for="rating9" title="4 1/2 stars"></label>
+                      <input type="radio" id="rating" name="rating" value="4" /><label for="rating8" title="4 stars"></label>
+                      <input type="radio" id="rating" name="rating" value="3.5" /><label class="half" for="rating7" title="3 1/2 stars"></label>
+                      <input type="radio" id="rating" name="rating" value="3" /><label for="rating6" title="3 stars"></label>
+                      <input type="radio" id="rating" name="rating" value="2.5" /><label class="half" for="rating5" title="2 1/2 stars"></label>
+                      <input type="radio" id="rating" name="rating" value="2" /><label for="rating4" title="2 stars"></label>
+                      <input type="radio" id="rating" name="rating" value="1.5" /><label class="half" for="rating3" title="1 1/2 stars"></label>
+                      <input type="radio" id="rating" name="rating" value="1" /><label for="rating2" title="1 star"></label>
+                      <input type="radio" id="rating" name="rating" value="0.5" /><label class="half" for="rating1" title="1/2 star"></label>
+                  
+                  </fieldset>
+                -->
+
+                  <br><br>
+                  <label for="descript">Review:</label><br>
+                  <textarea id="descript" name="descript" rows="10" cols="50" placeholder="Write a review..."></textarea> 
+                <button><input type="submit" value="Submit"></button>
+              </form> 
+              </div>
+
+            </section>
+
+            <!---
+<style>
+
+  /* Base setup */
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+body {
+    margin: 5%; 
+    text-align: center;
+    background: #111;
+    color: #333; 
+}
+h1 {
+    font-size: 2em; 
+    margin-bottom: .5rem;
+}
+
+/* Ratings widget */
+.rate {
+    display: inline-block;
+    border: 0;
+}
+/* Hide radio */
+.rate > input {
+    display: none;
+}
+/* Order correctly by floating highest to the right */
+.rate > label {
+    float: right;
+}
+/* The star of the show */
+.rate > label:before {
+    display: inline-block;
+    font-size: 2rem;
+    padding: .3rem .2rem;
+    margin: 0;
+    cursor: pointer;
+    font-family: FontAwesome;
+    content: "\f005 "; /* full star */
+}
+
+/* Half star trick */
+.rate .half:before {
+    content: "\f089 "; /* half star no outline */
+    position: absolute;
+    padding-right: 0;
+}
+/* Click + hover color */
+input:checked ~ label, /* color current and previous stars on checked */
+label:hover, label:hover ~ label { color: #73B100;  } /* color previous stars on hover */
+
+/* Hover highlights */
+input:checked + label:hover, input:checked ~ label:hover, /* highlight current and previous stars */
+input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
+label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: #A6E72D;  } 
+
+</style>
+-->
+    <!-----------------------------------------------------------------Footer-------------------------------------------------------------------->
+    <%- include('partials/footer'); %>
