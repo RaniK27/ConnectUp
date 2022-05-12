@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Top Records</title>
+</head>
+<body>            
+    <section class="sub-header">
+        <%- include('partials/header'); %>
+    </section>
+   <!------------------------------------------------------Records------------------------------------------------------------------->
+
+   
+    <div class="row" style="padding:0 5%;">
+        <div class="about-col">
+   <button class="button-51" role="button"><a href = '/topfive'>Overall</a></button><br><br>
+    </div><div class="about-col">
+   <button class="button-51" role="button"><a href = '/topfiveDaily'>Daily</a></button><br><br>
+    </div><div class="about-col">
+   <button class="button-51" role="button"><a href = '/topfiveMonthly'>This Month</a></button><br><br>
+    </div></div>
+   <table>
+   <tr>
+       <th>No.</th>
+       <th>Name</th>
+       
+   </tr>
+   <% if(typeof data != "undefined" && data){ %>           
+    <% if(data.length){ %>
+      <% for(var i = 0; i< data.length; i++) {%>  
+      <tr>
+        <td scope="row"><%= (i+1) %></td>
+        <td><%= data[i].username%></td>
+      </tr>
+      <% }}else{ %>
+           <tr>
+              <td colspan="3">Sorry! Coundn't display the records!</td>
+           </tr>
+        <% }} %> 
+        </table>
+    
+    <br><br>
+   <!------------------------------------------------------Footer-------------------------------------------------------------------->
+   <%- include('partials/footer'); %>
