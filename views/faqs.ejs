@@ -2,48 +2,17 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="ConnectUp">
-    <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="Reet Khare">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConnectUp</title>
-    <link rel="stylesheet" href="CSS/style.css">
-    <script src="https://kit.fontawesome.com/d652b9f554.js" crossorigin="anonymous"></script>
+    <%- include('partials/head'); %>
+    <title>ConnectUP</title>
     
 <!--    <link rel="shortcut icon" type="image/jpg" href="./Images/favicon.png">-->
 </head>
 
 <body>
-    <section class="sub-header">
-        <nav>
-            <a href="index.html"><img src="./Images/logo1.png" alt="Eduford Logo"></a>
-            <div class="nav-links" id="navLinks">
-                <i class="fas fa-times" onclick="hideMenu()"></i>
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="aboutus.html">About Us</a>
-                    </li>
-                    <li>
-                        <a href="signin.html">Sign In</a>
-                    </li>
-                    <li>
-                        <a href="faqs.html">FAQs</a>
-                    </li>
-                    <li>
-                        <a href="contactus.html">Contact Us</a>
-                    </li>
-                </ul>
-            </div>
-            <i class="fas fa-bars" onclick="showMenu()"></i>
-        </nav>
-
-       <h1>FAQs</h1>
-    </section>
+   <section class="sub-header">
+      <%- include('partials/header'); %>
+      <h1>FAQs</h1>
+   </section>
    <!---------------------------------------------------------------FAQs Content---------------------------------------------------------------->
    <section class="faqs">
        <div class="faq">
@@ -80,7 +49,7 @@
            </div>
            <div class="answer">
                The system is build to connect you to your relevant stakeholders based on your industry and preferred stage. Under the profile of every enabler there will be an option to “connect/apply”. Upon clicking, a request will be sent to the respective profile for acceptance. Once accepted, you will able to see the enabler as a new connection.
-</div>
+           </div>
        </div>
        <div class="faq">
            <div class="question">
@@ -108,18 +77,4 @@
        </div>
    </section>   
    <!-----------------------------------------------------------------Footer-------------------------------------------------------------------->
-   <section class="footer">
-      <hr>
-       <h4>About Us</h4>
-       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe officiis ut sequi consequuntur officia similique blanditiis autem quibusdam ea, amet est nisi fugit! <br>Commodi explicabo rem magnam debitis, libero consectetur!</p>
-       <div class="icons">
-           <i class="fa fa-facebook"></i>
-           <i class="fa fa-twitter"></i>
-           <i class="fa fa-instagram"></i>
-           <i class="fa fa-linkedin"></i>
-       </div>
-       <hr>
-   </section>
- <script src="./JS/script.js"></script>
-</body>
-</html>
+   <%- include('partials/footer'); %>

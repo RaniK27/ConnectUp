@@ -27,7 +27,9 @@ app.use('/js',express.static(__dirname + '/public/js'))
 //Template Engine
 app.set('views','./views')
 app.set('view engine','ejs')
-
+app.get('', (res, res) => {
+    res.render('index')
+})
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
    extended: true 
